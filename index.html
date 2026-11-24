@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,727 +6,580 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Josh Abraham | Portfolio</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
 <style>
-
-:root{
---bg:#ffffff;
---bg2:#f7f9fc;
---text:#0f172a;
---muted:#64748b;
---primary:#2563eb;
---glass:rgba(255,255,255,.75);
---border:rgba(255,255,255,.55);
---shadow:0 25px 70px rgba(0,0,0,.08);
---radius:22px;
+:root {
+  --bg: #f7f9fc;
+  --card: #ffffff;
+  --text: #172033;
+  --muted: #667085;
+  --blue: #2864dc;
+  --border: rgba(20,35,60,.10);
 }
 
-body.dark{
---bg:#05070b;
---bg2:#0c111b;
---text:#f3f4f6;
---muted:#94a3b8;
---primary:#4f8cff;
---glass:rgba(20,26,40,.72);
---border:rgba(255,255,255,.08);
---shadow:0 25px 70px rgba(0,0,0,.45);
+[data-theme="dark"] {
+  --bg: #0c1220;
+  --card: #141d2f;
+  --text: #eef3ff;
+  --muted: #a6b2c8;
+  --blue: #82aaff;
+  --border: rgba(220,230,255,.12);
 }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-scroll-behavior:smooth;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-body{
-font-family:'Inter',sans-serif;
-background:var(--bg);
-color:var(--text);
-transition:.35s;
-overflow-x:hidden;
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  transition: .3s;
 }
 
-body::before{
-content:"";
-position:fixed;
-width:700px;
-height:700px;
-background:radial-gradient(circle,#3b82f630 0%,transparent 70%);
-top:-250px;
-right:-180px;
-z-index:-2;
-animation:float1 12s ease-in-out infinite;
+a { text-decoration: none; color: inherit; }
+
+nav {
+  position: sticky;
+  top: 12px;
+  z-index: 100;
+  max-width: 1100px;
+  margin: 14px auto;
+  padding: 14px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 10px 35px rgba(0,0,0,.06);
+  backdrop-filter: blur(15px);
 }
 
-body::after{
-content:"";
-position:fixed;
-width:650px;
-height:650px;
-background:radial-gradient(circle,#60a5fa25 0%,transparent 70%);
-left:-220px;
-bottom:-220px;
-z-index:-2;
-animation:float2 14s ease-in-out infinite;
+.logo {
+  font-size: 1.5rem;
+  font-weight: 850;
+  letter-spacing: -2px;
 }
 
-@keyframes float1{
-50%{transform:translateY(40px) translateX(-40px);}
+.logo span { color: var(--blue); }
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  align-items: center;
 }
 
-@keyframes float2{
-50%{transform:translateY(-30px) translateX(35px);}
+.nav-links a {
+  color: var(--muted);
+  font-size: .9rem;
+  transition: .2s;
 }
 
-nav{
-position:fixed;
-top:20px;
-left:50%;
-transform:translateX(-50%);
-width:min(1100px,92%);
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 24px;
-backdrop-filter:blur(18px);
-background:var(--glass);
-border:1px solid var(--border);
-border-radius:999px;
-box-shadow:var(--shadow);
-z-index:999;
+.nav-links a:hover { color: var(--blue); }
+
+.theme-btn {
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  padding: 9px 13px;
+  border-radius: 12px;
+  cursor: pointer;
 }
 
-.logo{
-font-size:1.1rem;
-font-weight:800;
-letter-spacing:.5px;
+.hero {
+  max-width: 1100px;
+  min-height: 620px;
+  margin: auto;
+  padding: 100px 30px;
+  display: grid;
+  grid-template-columns: 1.3fr .7fr;
+  align-items: center;
+  gap: 50px;
 }
 
-.logo span{
-color:var(--primary);
+.eyebrow {
+  color: var(--blue);
+  font-size: .8rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
 }
 
-nav ul{
-display:flex;
-gap:28px;
-list-style:none;
+h1 {
+  font-size: clamp(4rem, 8vw, 6.5rem);
+  line-height: .95;
+  letter-spacing: -7px;
+  margin: 22px 0;
 }
 
-nav a{
-text-decoration:none;
-color:var(--text);
-font-weight:600;
-font-size:.95rem;
-transition:.3s;
+.blue { color: var(--blue); }
+
+.hero p {
+  color: var(--muted);
+  font-size: 1.15rem;
+  max-width: 580px;
 }
 
-nav a:hover{
-color:var(--primary);
+.buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 30px;
+  flex-wrap: wrap;
 }
 
-.actions{
-display:flex;
-gap:12px;
-align-items:center;
+.btn {
+  display: inline-block;
+  padding: 13px 20px;
+  border-radius: 12px;
+  background: var(--blue);
+  color: white;
+  font-weight: 700;
+  transition: .2s;
 }
 
-.theme-btn{
-width:42px;
-height:42px;
-border-radius:50%;
-border:none;
-background:var(--primary);
-color:white;
-cursor:pointer;
-font-size:1rem;
-transition:.3s;
+.btn:hover { transform: translateY(-3px); }
+
+.btn-outline {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
 }
 
-.theme-btn:hover{
-transform:rotate(25deg);
+.profile-card {
+  padding: 30px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 25px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.07);
+  animation: float 5s ease-in-out infinite;
 }
 
-section{
-width:min(1150px,92%);
-margin:auto;
-padding:110px 0;
+.profile-logo {
+  width: 85px;
+  height: 85px;
+  display: grid;
+  place-items: center;
+  border-radius: 23px;
+  color: white;
+  font-size: 2rem;
+  font-weight: 900;
+  background: linear-gradient(135deg,#2864dc,#82aaff);
 }
 
-.hero{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-position:relative;
+.profile-card h2 { margin-top: 22px; }
+
+.profile-card p {
+  color: var(--muted);
+  font-size: .95rem;
 }
 
-.hero-content{
-max-width:900px;
-animation:fadeUp 1s ease;
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 25px;
 }
 
-.badge{
-display:inline-block;
-padding:10px 18px;
-background:rgba(37,99,235,.1);
-color:var(--primary);
-border-radius:999px;
-font-weight:700;
-margin-bottom:28px;
+.stat {
+  padding: 15px;
+  background: var(--bg);
+  border-radius: 14px;
 }
 
-.hero h1{
-font-size:clamp(3.5rem,8vw,6rem);
-font-weight:900;
-line-height:1;
-margin-bottom:24px;
-letter-spacing:-3px;
+.stat strong {
+  display: block;
+  font-size: 1.5rem;
+  color: var(--blue);
 }
 
-.hero p{
-font-size:1.35rem;
-color:var(--muted);
-max-width:760px;
-margin:auto;
-line-height:1.8;
+.stat small { color: var(--muted); }
+
+section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 85px 30px;
 }
 
-.cta{
-margin-top:50px;
-display:flex;
-justify-content:center;
-gap:18px;
-flex-wrap:wrap;
+.section-title {
+  font-size: clamp(2.3rem,5vw,3.5rem);
+  letter-spacing: -3px;
+  margin: 10px 0;
 }
 
-.btn{
-padding:16px 34px;
-border-radius:999px;
-font-weight:700;
-text-decoration:none;
-transition:.35s;
+.section-desc {
+  color: var(--muted);
+  max-width: 650px;
+  margin-bottom: 35px;
 }
 
-.primary{
-background:var(--primary);
-color:white;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 20px;
 }
 
-.secondary{
-border:2px solid var(--primary);
-color:var(--primary);
+.card {
+  padding: 28px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  box-shadow: 0 10px 35px rgba(0,0,0,.035);
+  transition: .25s;
 }
 
-.primary:hover,
-.secondary:hover{
-transform:translateY(-5px);
-box-shadow:var(--shadow);
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--blue);
 }
 
-.grid-bg{
-position:absolute;
-inset:0;
-background-image:
-linear-gradient(rgba(100,100,100,.08) 1px,transparent 1px),
-linear-gradient(90deg,rgba(100,100,100,.08) 1px,transparent 1px);
-background-size:50px 50px;
-mask-image:radial-gradient(circle at center,black 40%,transparent 90%);
-pointer-events:none;
+.card-icon {
+  width: 45px;
+  height: 45px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: rgba(40,100,220,.12);
+  color: var(--blue);
+  font-weight: 900;
 }
 
-.section-title{
-font-size:2.8rem;
-font-weight:800;
-margin-bottom:18px;
+.card h3 {
+  margin: 17px 0 10px;
+  font-size: 1.3rem;
 }
 
-.section-sub{
-color:var(--muted);
-font-size:1.1rem;
-margin-bottom:55px;
-max-width:760px;
-line-height:1.8;
+.card p, .card li { color: var(--muted); }
+
+.card ul {
+  padding-left: 20px;
+  margin-top: 12px;
 }
 
-.about-card{
-background:var(--bg2);
-padding:50px;
-border-radius:var(--radius);
-box-shadow:var(--shadow);
-line-height:2;
-font-size:1.08rem;
+.card li { margin: 8px 0; }
+
+.featured {
+  padding: 35px;
+  border-radius: 25px;
+  border: 1px solid var(--border);
+  background: linear-gradient(135deg,rgba(40,100,220,.13),transparent);
 }
 
-.skills-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:22px;
+.featured h3 {
+  font-size: 2rem;
+  margin: 10px 0;
 }
 
-.skill{
-background:var(--bg2);
-padding:28px;
-border-radius:18px;
-text-align:center;
-font-weight:700;
-transition:.35s;
-box-shadow:var(--shadow);
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
 }
 
-.skill:hover{
-transform:translateY(-10px);
-background:var(--primary);
-color:white;
+.tag {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 7px 13px;
+  border-radius: 30px;
+  color: var(--muted);
+  font-size: .85rem;
 }
 
-.fade{
-opacity:0;
-transform:translateY(60px);
-transition:1s;
+.timeline {
+  border-left: 2px solid var(--border);
+  padding-left: 25px;
+  display: grid;
+  gap: 30px;
 }
 
-.fade.show{
-opacity:1;
-transform:none;
+.timeline-item {
+  position: relative;
 }
 
-@keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(50px);
-}
-to{
-opacity:1;
-transform:none;
-}
-}
-
-@media(max-width:900px){
-
-nav ul{
-display:none;
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -32px;
+  top: 8px;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background: var(--blue);
 }
 
-.hero h1{
-font-size:3.5rem;
+.timeline-item p { color: var(--muted); }
+
+footer {
+  max-width: 1100px;
+  margin: auto;
+  padding: 40px 30px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
-.hero p{
-font-size:1.05rem;
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: .7s ease;
 }
 
-.about-card{
-padding:30px;
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-}
-/* ===========================
-   PART 2 OF 3
-   Continue directly after Part 1
-=========================== */
-
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:28px;
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
-.card{
-background:var(--bg2);
-padding:34px;
-border-radius:22px;
-box-shadow:var(--shadow);
-transition:.35s;
+@media(max-width:750px) {
+  .hero { grid-template-columns: 1fr; padding-top: 70px; }
+  .grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  h1 { letter-spacing: -4px; }
 }
 
-.card:hover{
-transform:translateY(-10px);
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1; transform: none; }
 }
-
-.card h3{
-margin-bottom:15px;
-font-size:1.4rem;
-}
-
-.card p{
-color:var(--muted);
-line-height:1.8;
-}
-
-.blog{
-background:var(--bg2);
-padding:50px;
-border-radius:24px;
-box-shadow:var(--shadow);
-}
-
-.blog h3{
-font-size:2rem;
-margin-bottom:24px;
-}
-
-.blog p{
-margin-bottom:20px;
-line-height:2;
-color:var(--muted);
-}
-
-.contact-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-}
-
-.social{
-display:flex;
-justify-content:center;
-align-items:center;
-padding:20px;
-border-radius:18px;
-background:var(--bg2);
-text-decoration:none;
-font-weight:700;
-color:var(--text);
-transition:.3s;
-box-shadow:var(--shadow);
-}
-
-.social:hover{
-background:var(--primary);
-color:white;
-transform:translateY(-8px);
-}
-
-footer{
-padding:40px;
-text-align:center;
-color:var(--muted);
-font-size:.95rem;
-}
-
 </style>
 </head>
 
 <body>
 
 <nav>
+  <a href="#home" class="logo">JA<span>.</span></a>
 
-<div class="logo">
-Josh <span>Abraham</span>
-</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#leadership">Leadership</a>
+    <a href="#robotics">Robotics</a>
+    <a href="#athletics">Athletics</a>
+    <a href="#projects">Projects</a>
+  </div>
 
-<ul>
-<li><a href="#about">About</a></li>
-<li><a href="#skills">Skills</a></li>
-<li><a href="#achievements">Achievements</a></li>
-<li><a href="#athletics">Athletics</a></li>
-<li><a href="#robotics">FTC</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#blog">Blog</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-
-<div class="actions">
-<button class="theme-btn" id="themeToggle">☾</button>
-</div>
-
+  <button class="theme-btn" id="themeToggle">◐</button>
 </nav>
 
-<section class="hero">
+<header class="hero" id="home">
+  <div>
+    <div class="eyebrow">Student • Leader • Builder</div>
+    <h1>Josh<br><span class="blue">Abraham.</span></h1>
 
-<div class="grid-bg"></div>
+    <p>
+      Student leader, developer, robotics enthusiast, and athlete.
+      I enjoy building new things, solving problems, and making a
+      positive impact through technology and leadership.
+    </p>
 
-<div class="hero-content">
+    <div class="buttons">
+      <a href="#accomplishments" class="btn">Explore my achievements</a>
+      <a href="#projects" class="btn btn-outline">My projects</a>
+    </div>
+  </div>
 
-<div class="badge">
-Student Leader • Developer • Robotics Enthusiast • Athlete
-</div>
+  <div class="profile-card">
+    <div class="profile-logo">JA</div>
+    <h2>Driven by ideas.</h2>
+    <p>Always learning. Always building. Always improving.</p>
 
-<h1>Josh Abraham</h1>
+    <div class="stats">
+      <div class="stat">
+        <strong>2×</strong>
+        <small>Basketball champion</small>
+      </div>
+      <div class="stat">
+        <strong>FTC</strong>
+        <small>Robotics member</small>
+      </div>
+      <div class="stat">
+        <strong>3</strong>
+        <small>Leadership milestones</small>
+      </div>
+      <div class="stat">
+        <strong>STEM</strong>
+        <small>Project builder</small>
+      </div>
+    </div>
+  </div>
+</header>
 
-<p>
-Passionate about leadership, technology, robotics, software development,
-public speaking, and creating innovative solutions that improve people's lives.
-</p>
-
-<div class="cta">
-<a class="btn primary" href="#projects">View Projects</a>
-<a class="btn secondary" href="#contact">Contact Me</a>
-</div>
-
-</div>
-
+<section id="about">
+  <div class="eyebrow">Introduction</div>
+  <h2 class="section-title">About Me</h2>
+  <p class="section-desc">
+    I'm interested in leadership, technology, robotics, sports,
+    public speaking, and finding creative solutions to problems.
+    I enjoy working with others and turning ideas into reality.
+  </p>
 </section>
 
-<section id="about" class="fade">
+<section id="accomplishments">
+  <div class="eyebrow">What I've achieved</div>
+  <h2 class="section-title">My Accomplishments</h2>
+  <p class="section-desc">
+    Experiences that have helped me grow as a leader, teammate,
+    speaker, and problem-solver.
+  </p>
 
-<h2 class="section-title">About Me</h2>
+  <div class="grid">
 
-<p class="section-sub">
-I enjoy combining leadership, technology, and creativity to solve meaningful
-problems. Whether speaking in front of an audience, leading a robotics team,
-playing competitive sports, or building technology, I strive to learn
-continuously and make a positive impact.
-</p>
+    <article class="card reveal" id="leadership">
+      <div class="card-icon">01</div>
+      <h3>Leadership & Community</h3>
+      <ul>
+        <li>Vice President of JFS Elementary in 5th grade.</li>
+        <li>President of JFS Elementary in 6th grade.</li>
+        <li>Participated in the CASL Leadership Conference.</li>
+        <li>Currently involved in Chaboya Middle School leadership.</li>
+        <li>Helped organize school spirit days, dances, and activities.</li>
+      </ul>
+    </article>
 
-<div class="about-card">
+    <article class="card reveal" id="robotics">
+      <div class="card-icon">02</div>
+      <h3>Robotics & STEM</h3>
+      <ul>
+        <li>Member of FTC Delta Robotics Team #21463.</li>
+        <li>Working on robot design, CAD, and programming.</li>
+        <li>Created an ocean-animal Kahoot for 3rd graders.</li>
+        <li>Participating in STEM outreach and education.</li>
+      </ul>
+    </article>
 
-I am passionate about leadership, robotics, programming, public speaking,
-debate, athletics, and problem solving. I enjoy creating technology that
-helps people, especially projects focused on accessibility and improving
-everyday life.
+    <article class="card reveal" id="athletics">
+      <div class="card-icon">03</div>
+      <h3>Athletics</h3>
+      <ul>
+        <li>Two-time AAU basketball league champion.</li>
+        <li>AAU football championship team member.</li>
+        <li>Developed teamwork, discipline, and sportsmanship.</li>
+      </ul>
+    </article>
 
-Through robotics competitions, leadership opportunities, athletics,
-and software development, I've learned the importance of teamwork,
-communication, persistence, and innovation.
+    <article class="card reveal">
+      <div class="card-icon">04</div>
+      <h3>Public Speaking</h3>
+      <ul>
+        <li>Speech competition finalist.</li>
+        <li>Debate competition finalist.</li>
+        <li>Developed public speaking and communication skills.</li>
+        <li>Practiced argumentation and critical thinking.</li>
+      </ul>
+    </article>
 
-</div>
-
+  </div>
 </section>
 
-<section id="skills" class="fade">
+<section id="projects">
+  <div class="eyebrow">Innovation & creativity</div>
+  <h2 class="section-title">My Projects</h2>
+  <p class="section-desc">
+    I enjoy using technology and engineering to solve real-world problems.
+  </p>
 
-<h2 class="section-title">Skills</h2>
+  <div class="featured reveal">
+    <div class="eyebrow">Featured project</div>
+    <h3>Automatic Medication Dispenser</h3>
+    <p>
+      Designing an automatic medication dispenser concept to help
+      elderly people manage their medication more easily.
+      The project combines electronics, programming, and 3D design.
+    </p>
 
-<div class="skills-grid">
-
-<div class="skill">HTML</div>
-<div class="skill">CSS</div>
-<div class="skill">JavaScript</div>
-<div class="skill">Arduino</div>
-<div class="skill">Leadership</div>
-<div class="skill">Public Speaking</div>
-<div class="skill">Debate</div>
-<div class="skill">Robotics</div>
-<div class="skill">Teamwork</div>
-<div class="skill">Communication</div>
-<div class="skill">Problem Solving</div>
-
-</div>
-
+    <div class="tags">
+      <span class="tag">Arduino</span>
+      <span class="tag">3D Printing</span>
+      <span class="tag">Onshape</span>
+      <span class="tag">Electronics</span>
+      <span class="tag">Engineering</span>
+    </div>
+  </div>
 </section>
 
-<section id="achievements" class="fade">
+<section id="journey">
+  <div class="eyebrow">My growth</div>
+  <h2 class="section-title">My Journey</h2>
 
-<h2 class="section-title">Achievements</h2>
+  <div class="timeline reveal">
+    <div class="timeline-item">
+      <h3>Elementary School</h3>
+      <p>
+        Began my leadership journey as Vice President in 5th grade
+        and President in 6th grade.
+      </p>
+    </div>
 
-<div class="cards">
+    <div class="timeline-item">
+      <h3>Middle School</h3>
+      <p>
+        Continued exploring leadership, athletics, public speaking,
+        and technology.
+      </p>
+    </div>
 
-<div class="card">
-<h3>Speech Finalist</h3>
-<p>Recognized as a finalist through strong public speaking, communication, and presentation skills.</p>
-</div>
-
-<div class="card">
-<h3>Debate Finalist</h3>
-<p>Developed critical thinking, persuasive speaking, and analytical reasoning through competitive debate.</p>
-</div>
-
-<div class="card">
-<h3>AAU Basketball Champion (2×)</h3>
-<p>Won two AAU basketball championships while developing leadership, teamwork, and discipline.</p>
-</div>
-
-<div class="card">
-<h3>AAU Football Champion</h3>
-<p>Championship-winning athlete demonstrating perseverance, teamwork, and commitment.</p>
-</div>
-
-<div class="card">
-<h3>FTC Robotics</h3>
-<p>Designed, programmed, and collaborated on competitive robotics projects while learning engineering principles.</p>
-</div>
-
-</div>
-
-</section>
-
-<section id="athletics" class="fade">
-
-<h2 class="section-title">Athletics</h2>
-
-<div class="cards">
-
-<div class="card">
-<h3>Basketball</h3>
-<p>
-Competed in AAU basketball and earned two championship titles while learning
-leadership, teamwork, resilience, and discipline.
-</p>
-</div>
-
-<div class="card">
-<h3>Football</h3>
-<p>
-Won an AAU football championship while strengthening communication,
-work ethic, and determination under pressure.
-</p>
-</div>
-
-</div>
-
-</section>
-
-<section id="robotics" class="fade">
-
-<h2 class="section-title">FTC Robotics</h2>
-
-<div class="about-card">
-
-FTC Robotics has allowed me to combine programming,
-engineering, electronics, and teamwork to build innovative robots
-for real-world challenges. Working with Arduino,
-mechanical systems, sensors, and software has strengthened my
-problem-solving skills while encouraging creativity and collaboration.
-
-</div>
-
-</section>
-<!-- ===========================
-     PART 3 OF 3
-     Continue directly after Part 2
-=========================== -->
-
-<section id="projects" class="fade">
-
-<h2 class="section-title">Projects</h2>
-
-<div class="cards">
-
-<div class="card">
-<h3>Smart Pill Dispenser</h3>
-<p>
-An Arduino-powered medication dispenser designed to help elderly users take medications on time using an LCD display, real-time clock (RTC), motorized dispensing system, and scheduled reminders.
-</p>
-</div>
-
-<div class="card">
-<h3>Portfolio Website</h3>
-<p>
-A modern Apple-inspired personal portfolio showcasing leadership, robotics, athletics, projects, and technical skills with responsive design and smooth animations.
-</p>
-</div>
-
-<div class="card">
-<h3>FTC Robotics</h3>
-<p>
-Designed, built, programmed, and tested competition robots while collaborating with teammates to solve engineering challenges.
-</p>
-</div>
-
-</div>
-
-</section>
-
-<section id="blog" class="fade">
-
-<h2 class="section-title">Blog</h2>
-
-<div class="blog">
-
-<h3>Designing a Smart Pill Dispenser for the Elderly</h3>
-
-<p>
-Many older adults manage multiple medications each day, and missing a dose or taking one at the wrong time can have serious consequences. I wanted to build a project that combines engineering with a meaningful real-world purpose, so I designed a smart pill dispenser to make medication schedules simpler and more reliable.
-</p>
-
-<p>
-The system is powered by an Arduino microcontroller that coordinates every part of the dispenser. An RTC (Real-Time Clock) module keeps accurate time even when the main device is turned off, allowing the dispenser to know exactly when medication should be released.
-</p>
-
-<p>
-An LCD screen provides clear information to the user, displaying the current time and status messages. A motor rotates the dispensing mechanism at scheduled times, delivering the correct medication compartment automatically.
-</p>
-
-<p>
-Building the project presented several challenges. I learned how to troubleshoot wiring problems, calibrate motors, synchronize hardware with software, and organize code so that each component worked together reliably. Every obstacle improved my understanding of electronics and programming.
-</p>
-
-<p>
-This project also reinforced the importance of designing technology with empathy. Rather than creating something simply because it was technically interesting, I focused on solving a practical problem that could genuinely improve someone's daily life.
-</p>
-
-<p>
-In the future, I hope to expand the dispenser with wireless notifications, a companion mobile application, cloud synchronization, battery backup, refill reminders, and improved accessibility features to make it even more useful for patients and caregivers.
-</p>
-
-</div>
-
-</section>
-
-<section id="contact" class="fade">
-
-<h2 class="section-title">Contact</h2>
-
-<p class="section-sub">
-I'd love to connect about leadership, robotics, software development, technology, or future opportunities.
-</p>
-
-<div class="contact-grid">
-
-<a href="#" class="social">GitHub</a>
-<a href="#" class="social">Outlook</a>
-
-
-</div>
-
+    <div class="timeline-item">
+      <h3>Robotics & Engineering</h3>
+      <p>
+        Joined FTC robotics and started developing independent
+        engineering projects.
+      </p>
+    </div>
+  </div>
 </section>
 
 <footer>
-© 2026 Josh Abraham
+  <div>
+    <strong>Josh Abraham</strong><br>
+    Student • Leader • Developer • Athlete
+  </div>
+
+  <div>© 2026 Josh Abraham</div>
 </footer>
 
 <script>
+const themeToggle = document.getElementById("themeToggle");
 
-const toggle=document.getElementById("themeToggle");
+themeToggle.addEventListener("click", () => {
+  const dark = document.documentElement.getAttribute("data-theme") !== "dark";
 
-toggle.addEventListener("click",()=>{
+  document.documentElement.setAttribute(
+    "data-theme",
+    dark ? "dark" : "light"
+  );
 
-document.body.classList.toggle("dark");
-
-toggle.textContent=document.body.classList.contains("dark")
-?"☀":"☾";
-
+  themeToggle.textContent = dark ? "☀" : "◐";
 });
 
-const observer=new IntersectionObserver((entries)=>{
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
 
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-entry.target.classList.add("show");
-
-}
-
+document.querySelectorAll(".reveal").forEach(element => {
+  observer.observe(element);
 });
-
-},{
-threshold:.15
-});
-
-document.querySelectorAll(".fade").forEach(el=>observer.observe(el));
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
-
-anchor.addEventListener("click",function(e){
-
-e.preventDefault();
-
-document.querySelector(this.getAttribute("href")).scrollIntoView({
-behavior:"smooth"
-});
-
-});
-
-});
-
 </script>
 
 </body>
 </html>
+
