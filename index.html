@@ -4,25 +4,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Josh Abraham | Portfolio</title>
+<meta name="theme-color" content="#f7f9fc">
+<meta name="description" content="Josh Abraham's personal portfolio showcasing leadership, robotics, athletics, public speaking, and STEM projects.">
+<title>Josh Abraham | Personal Portfolio</title>
 
 <style>
 :root {
   --bg: #f7f9fc;
-  --card: #ffffff;
+  --surface: rgba(255,255,255,.78);
+  --card: #fff;
   --text: #172033;
   --muted: #667085;
   --blue: #2864dc;
+  --blue-light: #78a6ff;
   --border: rgba(20,35,60,.10);
+  --shadow: 0 18px 55px rgba(31,55,100,.08);
 }
 
 [data-theme="dark"] {
-  --bg: #0c1220;
+  --bg: #0b1120;
+  --surface: rgba(20,29,47,.85);
   --card: #141d2f;
   --text: #eef3ff;
   --muted: #a6b2c8;
   --blue: #82aaff;
+  --blue-light: #477fe8;
   --border: rgba(220,230,255,.12);
+  --shadow: 0 18px 55px rgba(0,0,0,.25);
 }
 
 * {
@@ -31,38 +39,48 @@
   padding: 0;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 100px; }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.6;
-  transition: .3s;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.65;
+  transition: background .3s, color .3s;
 }
 
 a { text-decoration: none; color: inherit; }
 
-nav {
+button { font: inherit; }
+
+/* NAVIGATION */
+
+.nav-container {
   position: sticky;
   top: 12px;
   z-index: 100;
-  max-width: 1100px;
-  margin: 14px auto;
-  padding: 14px 22px;
+  padding: 0 5%;
+}
+
+nav {
+  max-width: 1150px;
+  margin: auto;
+  padding: 12px 18px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--card);
+  gap: 20px;
+  background: var(--surface);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border);
   border-radius: 18px;
-  box-shadow: 0 10px 35px rgba(0,0,0,.06);
-  backdrop-filter: blur(15px);
+  box-shadow: var(--shadow);
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: 850;
+  font-size: 1.55rem;
+  font-weight: 900;
   letter-spacing: -2px;
 }
 
@@ -70,79 +88,87 @@ nav {
 
 .nav-links {
   display: flex;
-  gap: 24px;
+  gap: 21px;
   align-items: center;
 }
 
 .nav-links a {
+  font-size: .85rem;
   color: var(--muted);
-  font-size: .9rem;
-  transition: .2s;
+  transition: color .2s;
 }
 
 .nav-links a:hover { color: var(--blue); }
 
-.theme-btn {
+.nav-actions { display: flex; gap: 8px; }
+
+.theme-btn, .menu-btn {
   border: 1px solid var(--border);
   background: var(--card);
   color: var(--text);
-  padding: 9px 13px;
+  padding: 9px 12px;
   border-radius: 12px;
   cursor: pointer;
 }
 
+.menu-btn { display: none; }
+
+/* HERO */
+
 .hero {
-  max-width: 1100px;
-  min-height: 620px;
+  max-width: 1150px;
+  min-height: 690px;
   margin: auto;
-  padding: 100px 30px;
+  padding: 110px 35px 90px;
   display: grid;
-  grid-template-columns: 1.3fr .7fr;
+  grid-template-columns: 1.25fr .75fr;
   align-items: center;
-  gap: 50px;
+  gap: 55px;
 }
 
 .eyebrow {
   color: var(--blue);
-  font-size: .8rem;
+  font-size: .76rem;
   font-weight: 800;
   letter-spacing: 3px;
   text-transform: uppercase;
 }
 
-h1 {
-  font-size: clamp(4rem, 8vw, 6.5rem);
+.hero h1 {
+  font-size: clamp(4rem, 8vw, 7rem);
   line-height: .95;
-  letter-spacing: -7px;
+  letter-spacing: -.085em;
   margin: 22px 0;
 }
 
 .blue { color: var(--blue); }
 
-.hero p {
+.hero-description {
   color: var(--muted);
-  font-size: 1.15rem;
-  max-width: 580px;
+  font-size: 1.12rem;
+  max-width: 610px;
 }
 
-.buttons {
+.hero-buttons {
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
   margin-top: 30px;
-  flex-wrap: wrap;
 }
 
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   padding: 13px 20px;
-  border-radius: 12px;
+  border-radius: 13px;
   background: var(--blue);
   color: white;
   font-weight: 700;
-  transition: .2s;
+  transition: transform .2s, opacity .2s;
 }
 
-.btn:hover { transform: translateY(-3px); }
+.btn:hover { transform: translateY(-3px); opacity: .9; }
 
 .btn-outline {
   background: var(--card);
@@ -152,105 +178,117 @@ h1 {
 
 .profile-card {
   padding: 30px;
-  background: var(--card);
+  background: linear-gradient(145deg,var(--card),var(--surface));
   border: 1px solid var(--border);
-  border-radius: 25px;
-  box-shadow: 0 20px 60px rgba(0,0,0,.07);
+  border-radius: 27px;
+  box-shadow: var(--shadow);
   animation: float 5s ease-in-out infinite;
 }
 
 .profile-logo {
-  width: 85px;
-  height: 85px;
+  height: 82px;
+  width: 82px;
   display: grid;
   place-items: center;
   border-radius: 23px;
+  background: linear-gradient(135deg,#2864dc,#82aaff);
   color: white;
   font-size: 2rem;
   font-weight: 900;
-  background: linear-gradient(135deg,#2864dc,#82aaff);
+  letter-spacing: -3px;
 }
 
-.profile-card h2 { margin-top: 22px; }
+.profile-card h2 {
+  margin-top: 22px;
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
 
-.profile-card p {
+.profile-card > p {
   color: var(--muted);
-  font-size: .95rem;
+  margin-top: 8px;
 }
 
 .stats {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2,1fr);
   gap: 12px;
   margin-top: 25px;
 }
 
 .stat {
   padding: 15px;
+  border-radius: 15px;
   background: var(--bg);
-  border-radius: 14px;
+  border: 1px solid var(--border);
 }
 
 .stat strong {
   display: block;
-  font-size: 1.5rem;
   color: var(--blue);
+  font-size: 1.5rem;
 }
 
 .stat small { color: var(--muted); }
 
+/* SECTIONS */
+
 section {
-  max-width: 1100px;
+  max-width: 1150px;
   margin: auto;
-  padding: 85px 30px;
+  padding: 80px 35px;
 }
 
-.section-title {
-  font-size: clamp(2.3rem,5vw,3.5rem);
-  letter-spacing: -3px;
-  margin: 10px 0;
-}
-
-.section-desc {
-  color: var(--muted);
-  max-width: 650px;
+.section-heading {
+  max-width: 700px;
   margin-bottom: 35px;
 }
 
+.section-heading h2 {
+  font-size: clamp(2.3rem,5vw,3.7rem);
+  letter-spacing: -.065em;
+  line-height: 1.1;
+  margin: 10px 0;
+}
+
+.section-heading p { color: var(--muted); }
+
 .grid {
   display: grid;
-  grid-template-columns: repeat(2,1fr);
-  gap: 20px;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 19px;
 }
 
 .card {
-  padding: 28px;
-  background: var(--card);
+  padding: 27px;
   border: 1px solid var(--border);
-  border-radius: 22px;
-  box-shadow: 0 10px 35px rgba(0,0,0,.035);
-  transition: .25s;
+  background: var(--card);
+  border-radius: 23px;
+  box-shadow: var(--shadow);
+  transition: transform .25s,border-color .25s;
 }
 
 .card:hover {
   transform: translateY(-5px);
-  border-color: var(--blue);
+  border-color: var(--blue-light);
 }
 
 .card-icon {
-  width: 45px;
-  height: 45px;
+  width: 46px;
+  height: 46px;
   display: grid;
   place-items: center;
   border-radius: 14px;
-  background: rgba(40,100,220,.12);
   color: var(--blue);
+  background: rgba(40,100,220,.11);
+  font-size: .9rem;
   font-weight: 900;
 }
 
 .card h3 {
-  margin: 17px 0 10px;
   font-size: 1.3rem;
+  letter-spacing: -.03em;
+  margin: 17px 0 9px;
 }
 
 .card p, .card li { color: var(--muted); }
@@ -262,74 +300,114 @@ section {
 
 .card li { margin: 8px 0; }
 
+.card li::marker { color: var(--blue); }
+
+/* FEATURED PROJECT */
+
 .featured {
-  padding: 35px;
-  border-radius: 25px;
+  padding: 38px;
+  border-radius: 26px;
   border: 1px solid var(--border);
-  background: linear-gradient(135deg,rgba(40,100,220,.13),transparent);
+  background: linear-gradient(135deg,rgba(40,100,220,.13),rgba(120,166,255,.035));
+  box-shadow: var(--shadow);
 }
 
 .featured h3 {
-  font-size: 2rem;
-  margin: 10px 0;
+  font-size: clamp(1.7rem,4vw,2.5rem);
+  letter-spacing: -.05em;
+  margin: 12px 0;
+}
+
+.featured p {
+  color: var(--muted);
+  max-width: 750px;
 }
 
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 20px;
+  gap: 9px;
+  margin-top: 22px;
 }
 
 .tag {
-  background: var(--card);
-  border: 1px solid var(--border);
   padding: 7px 13px;
+  border: 1px solid var(--border);
+  background: var(--card);
   border-radius: 30px;
   color: var(--muted);
-  font-size: .85rem;
+  font-size: .84rem;
 }
+
+/* TIMELINE */
 
 .timeline {
   border-left: 2px solid var(--border);
-  padding-left: 25px;
+  margin-left: 9px;
+  padding-left: 26px;
   display: grid;
-  gap: 30px;
+  gap: 28px;
 }
 
-.timeline-item {
-  position: relative;
-}
+.timeline-item { position: relative; }
 
 .timeline-item::before {
   content: "";
   position: absolute;
-  left: -32px;
-  top: 8px;
-  height: 12px;
+  left: -33px;
+  top: 9px;
   width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: var(--blue);
+  box-shadow: 0 0 0 5px var(--bg);
 }
 
+.timeline-item h3 { margin-bottom: 5px; }
 .timeline-item p { color: var(--muted); }
 
-footer {
-  max-width: 1100px;
-  margin: auto;
-  padding: 40px 30px;
-  border-top: 1px solid var(--border);
+/* FINAL HIGHLIGHT */
+
+.closing {
+  text-align: center;
+  padding: 55px 30px;
+  border: 1px solid var(--border);
+  border-radius: 26px;
+  background: linear-gradient(135deg,rgba(40,100,220,.13),transparent);
+}
+
+.closing h2 {
+  font-size: clamp(2rem,5vw,3rem);
+  letter-spacing: -.06em;
+}
+
+.closing p {
+  max-width: 600px;
   color: var(--muted);
+  margin: 12px auto 0;
+}
+
+/* FOOTER */
+
+footer {
+  max-width: 1150px;
+  margin: auto;
+  padding: 35px;
+  border-top: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 15px;
+  color: var(--muted);
+  font-size: .9rem;
 }
+
+/* ANIMATIONS */
 
 .reveal {
   opacity: 0;
-  transform: translateY(25px);
-  transition: .7s ease;
+  transform: translateY(22px);
+  transition: opacity .7s ease,transform .7s ease;
 }
 
 .reveal.visible {
@@ -339,14 +417,52 @@ footer {
 
 @keyframes float {
   0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-9px); }
 }
 
-@media(max-width:750px) {
-  .hero { grid-template-columns: 1fr; padding-top: 70px; }
+/* MOBILE */
+
+@media(max-width:850px) {
+  .nav-links { gap: 12px; }
+  .nav-links a { font-size: .77rem; }
+  .hero { gap: 30px; }
+}
+
+@media(max-width:700px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 80px;
+    min-height: auto;
+  }
+
+  .profile-card { animation: none; }
+
   .grid { grid-template-columns: 1fr; }
-  .nav-links { display: none; }
-  h1 { letter-spacing: -4px; }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 67px;
+    left: 5%;
+    right: 5%;
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    background: var(--surface);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links.open { display: flex; }
+
+  .menu-btn { display: block; }
+
+  .hero h1 { letter-spacing: -.065em; }
+
+  section { padding: 60px 25px; }
+
+  footer { padding: 30px 25px; }
 }
 
 @media(prefers-reduced-motion:reduce) {
@@ -355,6 +471,7 @@ footer {
     transition: none !important;
     scroll-behavior: auto !important;
   }
+
   .reveal { opacity: 1; transform: none; }
 }
 </style>
@@ -362,201 +479,407 @@ footer {
 
 <body>
 
+<!-- NAVIGATION -->
+
+<div class="nav-container">
 <nav>
   <a href="#home" class="logo">JA<span>.</span></a>
 
-  <div class="nav-links">
+  <div class="nav-links" id="navLinks">
     <a href="#about">About</a>
     <a href="#leadership">Leadership</a>
     <a href="#robotics">Robotics</a>
+    <a href="#speaking">Speech</a>
     <a href="#athletics">Athletics</a>
     <a href="#projects">Projects</a>
+    <a href="#recognition">Awards</a>
   </div>
 
-  <button class="theme-btn" id="themeToggle">◐</button>
+  <div class="nav-actions">
+    <button class="theme-btn" id="themeToggle" aria-label="Toggle dark mode">◐</button>
+    <button class="menu-btn" id="menuToggle" aria-label="Toggle navigation">☰</button>
+  </div>
 </nav>
+</div>
+
+<main>
+
+<!-- HERO -->
 
 <header class="hero" id="home">
   <div>
     <div class="eyebrow">Student • Leader • Builder</div>
+
     <h1>Josh<br><span class="blue">Abraham.</span></h1>
 
-    <p>
-      Student leader, developer, robotics enthusiast, and athlete.
-      I enjoy building new things, solving problems, and making a
-      positive impact through technology and leadership.
+    <p class="hero-description">
+      Student leader, robotics enthusiast, developer, and athlete.
+      I enjoy building new things, solving problems, and making
+      a positive impact through technology, teamwork, and leadership.
     </p>
 
-    <div class="buttons">
+    <div class="hero-buttons">
       <a href="#accomplishments" class="btn">Explore my achievements</a>
-      <a href="#projects" class="btn btn-outline">My projects</a>
+      <a href="#projects" class="btn btn-outline">View my projects</a>
     </div>
   </div>
 
   <div class="profile-card">
     <div class="profile-logo">JA</div>
-    <h2>Driven by ideas.</h2>
-    <p>Always learning. Always building. Always improving.</p>
+
+    <h2>Driven by ideas.<br>Focused on impact.</h2>
+
+    <p>Learning, building, competing, and growing every day.</p>
 
     <div class="stats">
       <div class="stat">
-        <strong>2×</strong>
-        <small>Basketball champion</small>
+        <strong>6+</strong>
+        <small>Years of basketball</small>
       </div>
       <div class="stat">
-        <strong>FTC</strong>
-        <small>Robotics member</small>
+        <strong>4</strong>
+        <small>Years of FLL</small>
       </div>
       <div class="stat">
-        <strong>3</strong>
-        <small>Leadership milestones</small>
+        <strong>2</strong>
+        <small>Years of FTC</small>
       </div>
       <div class="stat">
-        <strong>STEM</strong>
-        <small>Project builder</small>
+        <strong>3×</strong>
+        <small>Exam recognition</small>
       </div>
     </div>
   </div>
 </header>
 
+<!-- ABOUT -->
+
 <section id="about">
-  <div class="eyebrow">Introduction</div>
-  <h2 class="section-title">About Me</h2>
-  <p class="section-desc">
-    I'm interested in leadership, technology, robotics, sports,
-    public speaking, and finding creative solutions to problems.
-    I enjoy working with others and turning ideas into reality.
-  </p>
+  <div class="section-heading reveal">
+    <div class="eyebrow">Introduction</div>
+    <h2>About Me</h2>
+    <p>
+      I'm interested in leadership, robotics, engineering, athletics,
+      public speaking, and technology. I enjoy collaborating with others,
+      taking on challenges, and creating things that can make a difference.
+    </p>
+  </div>
 </section>
 
+<!-- ACCOMPLISHMENTS -->
+
 <section id="accomplishments">
-  <div class="eyebrow">What I've achieved</div>
-  <h2 class="section-title">My Accomplishments</h2>
-  <p class="section-desc">
-    Experiences that have helped me grow as a leader, teammate,
-    speaker, and problem-solver.
-  </p>
+  <div class="section-heading reveal">
+    <div class="eyebrow">Experience & achievements</div>
+    <h2>What I've Accomplished</h2>
+    <p>
+      A collection of experiences that have shaped me as a leader,
+      competitor, speaker, volunteer, and problem-solver.
+    </p>
+  </div>
 
   <div class="grid">
 
+    <!-- LEADERSHIP -->
+
     <article class="card reveal" id="leadership">
       <div class="card-icon">01</div>
-      <h3>Leadership & Community</h3>
+      <h3>Leadership & ASB</h3>
+      <p>Building leadership experience through student government and school involvement.</p>
       <ul>
-        <li>Vice President of JFS Elementary in 5th grade.</li>
-        <li>President of JFS Elementary in 6th grade.</li>
-        <li>Participated in the CASL Leadership Conference.</li>
-        <li>Currently involved in Chaboya Middle School leadership.</li>
-        <li>Helped organize school spirit days, dances, and activities.</li>
+        <li>Current ASB student body member at Chaboya Middle School.</li>
+        <li>JFS Elementary School Student Body President in 6th grade.</li>
+        <li>JFS Elementary School Student Body Vice President in 5th grade.</li>
+        <li>Helped support school events, spirit days, dances, and student activities.</li>
       </ul>
     </article>
 
-    <article class="card reveal" id="robotics">
-      <div class="card-icon">02</div>
-      <h3>Robotics & STEM</h3>
-      <ul>
-        <li>Member of FTC Delta Robotics Team #21463.</li>
-        <li>Working on robot design, CAD, and programming.</li>
-        <li>Created an ocean-animal Kahoot for 3rd graders.</li>
-        <li>Participating in STEM outreach and education.</li>
-      </ul>
-    </article>
-
-    <article class="card reveal" id="athletics">
-      <div class="card-icon">03</div>
-      <h3>Athletics</h3>
-      <ul>
-        <li>Two-time AAU basketball league champion.</li>
-        <li>AAU football championship team member.</li>
-        <li>Developed teamwork, discipline, and sportsmanship.</li>
-      </ul>
-    </article>
+    <!-- CASL -->
 
     <article class="card reveal">
-      <div class="card-icon">04</div>
-      <h3>Public Speaking</h3>
+      <div class="card-icon">02</div>
+      <h3>CASL Leadership Conference</h3>
+      <p>Represented JFS Elementary School at the California Association of Student Leaders Conference.</p>
       <ul>
-        <li>Speech competition finalist.</li>
-        <li>Debate competition finalist.</li>
-        <li>Developed public speaking and communication skills.</li>
-        <li>Practiced argumentation and critical thinking.</li>
+        <li>Participated in the CASL Leadership Conference.</li>
+        <li>Represented my elementary school.</li>
+        <li>Learned from other student leaders.</li>
+        <li>Shared experiences and explored what it takes to become an effective leader.</li>
+      </ul>
+    </article>
+
+    <!-- FTC -->
+
+    <article class="card reveal" id="robotics">
+      <div class="card-icon">FTC</div>
+      <h3>FIRST Tech Challenge</h3>
+      <p>FTC Delta Robotics Team #21463.</p>
+      <ul>
+        <li>Two years of FIRST Tech Challenge experience.</li>
+        <li>Major role in building and designing competition robots.</li>
+        <li>Contribute to robot development and engineering.</li>
+        <li>Work with teammates to solve design and build challenges.</li>
+      </ul>
+    </article>
+
+    <!-- FLL -->
+
+    <article class="card reveal">
+      <div class="card-icon">FLL</div>
+      <h3>FIRST LEGO League</h3>
+      <p>Four years of FIRST LEGO League experience.</p>
+      <ul>
+        <li>Member of FLL Delta Rovers.</li>
+        <li>Key coder and builder on the team.</li>
+        <li>Participated in FLL for four years.</li>
+        <li>Advanced to regional competitions.</li>
+      </ul>
+    </article>
+
+    <!-- SPEECH -->
+
+    <article class="card reveal" id="speaking">
+      <div class="card-icon">S</div>
+      <h3>Speech Competitions</h3>
+      <p>Silver Creek Academy finalist.</p>
+      <ul>
+        <li>4th Grade Speech Competition Finalist.</li>
+        <li>6th Grade Speech Competition Finalist.</li>
+        <li>Developed confidence, presentation, and communication skills.</li>
+      </ul>
+    </article>
+
+    <!-- DEBATE -->
+
+    <article class="card reveal">
+      <div class="card-icon">D</div>
+      <h3>Debate Competitions</h3>
+      <p>Silver Creek Academy finalist.</p>
+      <ul>
+        <li>5th Grade Debate Competition Finalist.</li>
+        <li>Developed argumentation and critical thinking skills.</li>
+        <li>Learned to communicate and defend ideas effectively.</li>
+      </ul>
+    </article>
+
+    <!-- BASKETBALL -->
+
+    <article class="card reveal" id="athletics">
+      <div class="card-icon">BB</div>
+      <h3>Basketball</h3>
+      <p>Over six years of basketball experience.</p>
+      <ul>
+        <li>Two-time AAU basketball champion.</li>
+        <li>More than six years playing basketball.</li>
+        <li>Developed teamwork, discipline, and competitive experience.</li>
+      </ul>
+    </article>
+
+    <!-- FOOTBALL -->
+
+    <article class="card reveal">
+      <div class="card-icon">FB</div>
+      <h3>Football</h3>
+      <p>AAU football championship experience.</p>
+      <ul>
+        <li>AAU football championship team member.</li>
+        <li>Developed teamwork and communication through athletics.</li>
+      </ul>
+    </article>
+
+    <!-- VOLUNTEERING -->
+
+    <article class="card reveal">
+      <div class="card-icon">STEM</div>
+      <h3>Volunteering & Outreach</h3>
+      <p>Helping younger students explore science and technology.</p>
+      <ul>
+        <li>STEM outreach volunteer.</li>
+        <li>Created educational activities for younger students.</li>
+        <li>Developed an ocean-animal Kahoot for 3rd graders through FLL Explore.</li>
+        <li>Helped introduce students to science and technology.</li>
+      </ul>
+    </article>
+
+    <!-- EXAMS -->
+
+    <article class="card reveal" id="recognition">
+      <div class="card-icon">A+</div>
+      <h3>MTCSV Diocesan Examination</h3>
+      <p>Academic recognition for outstanding performance.</p>
+      <ul>
+        <li>Participated in the Diocesan Examination three times.</li>
+        <li>Recognized three times for outstanding performance.</li>
+        <li>Demonstrated continued academic commitment.</li>
       </ul>
     </article>
 
   </div>
 </section>
 
+<!-- PROJECTS -->
+
 <section id="projects">
-  <div class="eyebrow">Innovation & creativity</div>
-  <h2 class="section-title">My Projects</h2>
-  <p class="section-desc">
-    I enjoy using technology and engineering to solve real-world problems.
-  </p>
+  <div class="section-heading reveal">
+    <div class="eyebrow">Engineering & innovation</div>
+    <h2>Projects & Ideas</h2>
+    <p>
+      I enjoy using technology and engineering to solve real-world
+      problems and turn ideas into working projects.
+    </p>
+  </div>
 
   <div class="featured reveal">
-    <div class="eyebrow">Featured project</div>
-    <h3>Automatic Medication Dispenser</h3>
+    <div class="eyebrow">Featured science project</div>
+
+    <h3>Automatic Pill Dispenser for the Elderly</h3>
+
     <p>
-      Designing an automatic medication dispenser concept to help
-      elderly people manage their medication more easily.
-      The project combines electronics, programming, and 3D design.
+      Developing an automatic medication dispenser designed to help
+      elderly individuals manage their medication. The project combines
+      electronics, programming, mechanical design, and 3D printing
+      to address a real-world need.
     </p>
 
     <div class="tags">
       <span class="tag">Arduino</span>
       <span class="tag">3D Printing</span>
-      <span class="tag">Onshape</span>
+      <span class="tag">Onshape CAD</span>
       <span class="tag">Electronics</span>
       <span class="tag">Engineering</span>
+      <span class="tag">Programming</span>
     </div>
   </div>
 </section>
+
+<!-- SKILLS -->
+
+<section id="skills">
+  <div class="section-heading reveal">
+    <div class="eyebrow">What I bring</div>
+    <h2>Skills & Interests</h2>
+    <p>Skills I've developed through school, competitions, projects, and teamwork.</p>
+  </div>
+
+  <div class="grid">
+    <article class="card reveal">
+      <div class="card-icon">01</div>
+      <h3>Technical Skills</h3>
+      <div class="tags">
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">Arduino</span>
+        <span class="tag">Onshape</span>
+        <span class="tag">CAD Design</span>
+        <span class="tag">Robotics</span>
+      </div>
+    </article>
+
+    <article class="card reveal">
+      <div class="card-icon">02</div>
+      <h3>Personal Skills</h3>
+      <div class="tags">
+        <span class="tag">Leadership</span>
+        <span class="tag">Public Speaking</span>
+        <span class="tag">Debate</span>
+        <span class="tag">Teamwork</span>
+        <span class="tag">Communication</span>
+        <span class="tag">Problem Solving</span>
+        <span class="tag">Collaboration</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- JOURNEY -->
 
 <section id="journey">
-  <div class="eyebrow">My growth</div>
-  <h2 class="section-title">My Journey</h2>
+  <div class="section-heading reveal">
+    <div class="eyebrow">The journey so far</div>
+    <h2>My Journey</h2>
+    <p>Experiences that have helped me grow over the years.</p>
+  </div>
 
   <div class="timeline reveal">
+
     <div class="timeline-item">
-      <h3>Elementary School</h3>
+      <h3>5th Grade — First Leadership Role</h3>
       <p>
-        Began my leadership journey as Vice President in 5th grade
-        and President in 6th grade.
+        Became JFS Elementary School Student Body Vice President
+        and began developing my leadership experience.
       </p>
     </div>
 
     <div class="timeline-item">
-      <h3>Middle School</h3>
+      <h3>6th Grade — Student Body President</h3>
       <p>
-        Continued exploring leadership, athletics, public speaking,
-        and technology.
+        Became JFS Elementary School Student Body President
+        and represented the school at the CASL Leadership Conference.
       </p>
     </div>
 
     <div class="timeline-item">
-      <h3>Robotics & Engineering</h3>
+      <h3>Robotics — Four Years of FLL</h3>
       <p>
-        Joined FTC robotics and started developing independent
-        engineering projects.
+        Developed coding and building skills with FLL Delta Rovers
+        and advanced to regional competitions.
       </p>
     </div>
+
+    <div class="timeline-item">
+      <h3>Robotics — Two Years of FTC</h3>
+      <p>
+        Joined FTC Delta Robotics Team #21463 and took on a major
+        role in designing and building robots.
+      </p>
+    </div>
+
+    <div class="timeline-item">
+      <h3>Middle School — ASB & New Challenges</h3>
+      <p>
+        Continued my leadership journey as an ASB student body member
+        while pursuing athletics, public speaking, and engineering projects.
+      </p>
+    </div>
+
   </div>
 </section>
+
+<!-- CLOSING -->
+
+<section>
+  <div class="closing reveal">
+    <div class="eyebrow">Looking ahead</div>
+    <h2>Always learning. Always building.</h2>
+    <p>
+      Every experience is an opportunity to grow, challenge myself,
+      and make a positive difference. I'm excited to see what comes next.
+    </p>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
 
 <footer>
   <div>
-    <strong>Josh Abraham</strong><br>
+    <strong style="color:var(--text)">Josh Abraham</strong><br>
     Student • Leader • Developer • Athlete
   </div>
 
-  <div>© 2026 Josh Abraham</div>
+  <div>© <span id="year"></span> Josh Abraham</div>
 </footer>
 
 <script>
+// DARK MODE
+
 const themeToggle = document.getElementById("themeToggle");
 
 themeToggle.addEventListener("click", () => {
-  const dark = document.documentElement.getAttribute("data-theme") !== "dark";
+  const dark =
+    document.documentElement.getAttribute("data-theme") !== "dark";
 
   document.documentElement.setAttribute(
     "data-theme",
@@ -565,6 +888,23 @@ themeToggle.addEventListener("click", () => {
 
   themeToggle.textContent = dark ? "☀" : "◐";
 });
+
+// MOBILE NAVIGATION
+
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", () => {
+  navLinks.classList.toggle("open");
+});
+
+navLinks.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+  });
+});
+
+// SCROLL ANIMATIONS
 
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -578,6 +918,11 @@ const observer = new IntersectionObserver(entries => {
 document.querySelectorAll(".reveal").forEach(element => {
   observer.observe(element);
 });
+
+// CURRENT YEAR
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
 </script>
 
 </body>
